@@ -196,3 +196,17 @@ Normalization continues with higher normal forms (4NF, 5NF, etc.), but 1NF, 2NF,
     - Well-structured tables make queries more straightforward and efficient.
 
 Normalization is a crucial aspect of database design, and understanding the normal forms helps in creating robust and efficient database schemas.
+
+---
+
+## ACID Properties:
+
+1. **Definition:**
+    - Properties ensuring reliability in database transactions.
+2. **ACID:**
+    - **Atomicity:** Transactions are treated as a single, indivisible unit.
+    - **Consistency:** Ensures the database remains in a valid state.
+    - **Isolation:** Transactions do not interfere with each other.
+    - **Durability:** Once a transaction is committed, its changes are permanent.
+
+---
