@@ -97,3 +97,102 @@ Indexing is a database optimization technique designed to enhance the speed of d
     - Columns frequently used in WHERE clauses or involved in JOIN operations are good candidates for indexing.
 - **Trade-off:**
     - While indexing improves query performance, it may come with the cost of increased storage and potential overhead during data modifications.
+
+# Normalization
+
+## Purpose:
+
+> Normalization is a database design technique that aims to organize data in a structured and efficient manner, minimizing data redundancy and dependency. The primary goal is to ensure data integrity and eliminate anomalies, such as update anomalies, insertion anomalies, and deletion anomalies, which may arise when the database is not properly organized.
+> 
+
+## Normal Forms:
+
+1. **First Normal Form (1NF):**
+    - Ensures that each column in a table contains atomic (indivisible) values, and there are no repeating groups or arrays.
+    
+    **Example:**
+    
+    ```
+    | Student_ID | Subjects                    |
+    |------------|-----------------------------|
+    | 101        | Math, Physics, Chemistry    |
+    
+    ```
+    
+    Convert to 1NF:
+    
+    ```
+    | Student_ID | Subject   |
+    |------------|-----------|
+    | 101        | Math      |
+    | 101        | Physics   |
+    | 101        | Chemistry |
+    
+    ```
+    
+2. **Second Normal Form (2NF):**
+    - Builds on 1NF and ensures that non-key attributes are fully functionally dependent on the primary key.
+    
+    **Example:**
+    
+    ```
+    | Order_ID | Product_ID | Product_Name | Supplier    |
+    |----------|------------|--------------|-------------|
+    | 1        | 101        | Laptop       | ABC Tech    |
+    | 1        | 102        | Printer      | XYZ Supplies|
+    
+    ```
+    
+    Convert to 2NF:
+    
+    ```
+    | Order_ID | Product_ID | Supplier    |
+    |----------|------------|-------------|
+    | 1        | 101        | ABC Tech    |
+    | 1        | 102        | XYZ Supplies|
+    
+    ```
+    
+3. **Third Normal Form (3NF):**
+    - Extends 2NF by ensuring that there is no transitive dependency, i.e., no non-prime attribute is dependent on another non-prime attribute.
+    
+    **Example:**
+    
+    ```
+    | Employee_ID | Department | Manager    |
+    |-------------|------------|------------|
+    | 101         | IT         | John Smith |
+    | 102         | HR         | Jane Doe   |
+    
+    ```
+    
+    Convert to 3NF:
+    
+    ```
+    | Employee_ID | Department | Manager_ID |
+    |-------------|------------|------------|
+    | 101         | IT         | 1          |
+    | 102         | HR         | 2          |
+    
+    | Manager_ID | Manager    |
+    |------------|------------|
+    | 1          | John Smith |
+    | 2          | Jane Doe   |
+    
+    ```
+    
+
+Normalization continues with higher normal forms (4NF, 5NF, etc.), but 1NF, 2NF, and 3NF are the most commonly discussed and implemented.
+
+## Benefits of Normalization:
+
+1. **Reduces Data Redundancy:**
+    - Eliminates repetitive data, reducing storage space and ensuring consistency.
+2. **Minimizes Update Anomalies:**
+    - Updates and modifications are less error-prone as data is stored in a structured manner.
+3. **Enhances Data Integrity:**
+    - Prevents data anomalies and maintains the integrity of the database.
+4. **Facilitates Query Optimization:**
+    - Well-structured tables make queries more straightforward and efficient.
+
+Normalization is a crucial aspect of database design, and understanding the normal forms helps in creating robust and efficient database schemas.
